@@ -45,12 +45,26 @@ dio: Powerful HTTP client for handling file uploads.
 cached_network_image: Caching library for efficient image loading.
 You can find the specific versions of these packages in the pubspec.yaml file.
 
+cupertino_icons: ^1.0.2
+firebase_core: ^2.13.0
+firebase_auth: ^4.6.1
+cloud_firestore: ^4.7.1
+firebase_storage: ^11.2.1
+shared_preferences: ^2.1.1
+font_awesome_flutter: ^10.4.0
+google_sign_in: ^6.1.0
+image_picker: ^0.8.7+5
+palette_generator: ^0.3.3+2
+image_fade: ^0.6.2
+intl: ^0.18.1
+flutter_facebook_auth: ^5.0.11
+
 ## Configuration
 To use your own server for uploading photos, modify the server URL in the services/upload_service.dart file.
 
 ## dart
 Copy code
-static const String uploadUrl = 'https://your-server-url.com/upload';
+static const String uploadUrl = 'https://github.com/Kingmax007/photo_app.git';
 
 ## Contributing
 Contributions to this project are welcome. Feel free to open issues or submit pull requests to suggest improvements or report bugs.
