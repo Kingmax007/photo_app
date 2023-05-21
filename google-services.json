@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "278796899580",
+    "project_id": "photoapp-628d7",
+    "storage_bucket": "photoapp-628d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278796899580:android:37761a52bc6dd7be52f379",
+        "android_client_info": {
+          "package_name": "com.kickchat.uzochukwu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278796899580-6dd8od091gud8r8ekebap1t7kbkr6jkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kickchat.uzochukwu",
+            "certificate_hash": "5efa087fc0ffc4e231b9b3cf6497e4bdc3e87d2a"
+          }
+        },
+        {
+          "client_id": "278796899580-kuljvgdppl5nvbkj72qirv8v6qjbmpgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEvRhUKsYr_DwvZ10Bgq5KY6zre854EiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278796899580-gt6g07jkuk7mm0krimpr8hegk6sh64be.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
