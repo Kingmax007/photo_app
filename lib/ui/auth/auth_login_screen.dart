@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -19,31 +17,12 @@ class AuthLoginScreen extends StatefulWidget {
 }
 
 class _AuthLoginScreenState extends State<AuthLoginScreen> {
-  TextEditingController emailController = TextEditingController(text: '');
-  TextEditingController usernameController = TextEditingController(text: '');
-  TextEditingController passwordController = TextEditingController(text: '');
   AuthService _authService = AuthService();
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   SharedPreferencesService _sharedPreferencesService = SharedPreferencesService();
 
-  bool validEmail = false;
-  bool validUsername = false;
-  bool validPassword = false;
-  int passwordLength = 0;
-  bool togglePassword = false;
-  bool userEmailDoesNotExist = false;
-  bool userPasswordDoesNotExist = false;
-  bool usernameExist = false;
-  bool userEmailExist = false;
+
   bool isLoading = false;
 
-  @override
-  void dispose() {
-    usernameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,56 +143,6 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
     );
   }
 
-  Future<void> createNewUser() async {
-    FocusScope.of(context).unfocus();
-    try {
-      setState(() {
-        userEmailExist = false;
-        isLoading = true;
-      });
-
-      await checkIfUserAndEmailExists();
-
-      UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-      UserModel user = UserModel(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-        username: capitalizeFirstLetter(usernameController.text.trim()),
-        userId: result.user!.uid,
-        profilePictureUrl: avatar(usernameController.text.trim()),
-      );
-      var createdUser = await _authService.createUser(user);
-      await _sharedPreferencesService.setSharedPreferencesString('user', jsonEncode(createdUser));
-      push(context, HomeScreen(), 'HomeScreen', false);
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-      });
-      showSnackBar(context, 'Error authenticating. Please try again later.', Colors.red);
-    }
-  }
-
-  Future checkIfUserAndEmailExists() async {
-    bool usernameExist = await _authService.checkIfUsernameExist(usernameController.text.trim());
-    if (usernameExist) {
-      setState(() {
-        usernameExist = true;
-        isLoading = false;
-      });
-      return;
-    }
-    bool emailExist = await _authService.checkIfEmailExist(emailController.text.trim());
-    if (emailExist) {
-      setState(() {
-        userEmailExist = true;
-        isLoading = false;
-      });
-      return;
-    }
-  }
 
   Future<void> googleAuth(BuildContext context) async {
     try {
