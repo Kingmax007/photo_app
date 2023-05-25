@@ -28,7 +28,7 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
